@@ -3,6 +3,7 @@
   --text: #1f2937;
   --primary: #2563eb;
   --surface: #ffffff;
+  --muted: #64748b;
 }
 
 * {
@@ -28,6 +29,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .nav ul {
@@ -44,7 +47,7 @@ body {
 
 .hero-content {
   margin-top: 6rem;
-  max-width: 620px;
+  max-width: 680px;
 }
 
 .hero-content h2 {
@@ -63,6 +66,10 @@ button {
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
+}
+
+.secondary-btn {
+  background: #475569;
 }
 
 .section {
@@ -88,16 +95,45 @@ button {
   text-align: center;
 }
 
-.contact-form {
+.planner-controls {
   margin-top: 1rem;
-  display: grid;
+  display: flex;
   gap: 0.8rem;
-  max-width: 500px;
+  flex-wrap: wrap;
 }
 
-input,
-textarea {
+input {
+  min-width: 260px;
+  flex: 1;
   padding: 0.75rem;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
+}
+
+.status {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.status.error {
+  color: #b91c1c;
+}
+
+.map {
+  margin-top: 1rem;
+  width: 100%;
+  height: 460px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+}
+
+.destination-list {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  color: #0f172a;
+}
+
+.destination-list li {
+  margin-bottom: 0.3rem;
 }
