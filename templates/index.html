@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Onepager Reiseplaner</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -12,52 +12,62 @@
     <nav class="nav">
       <h1 class="logo">Travelapp</h1>
       <ul>
-        <li><a href="#about">Über uns</a></li>
-        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#auth">Login</a></li>
         <li><a href="#trip-planner">Routenplaner</a></li>
       </ul>
     </nav>
     <div class="hero-content">
       <h2>Plane deine Reise als Onepager</h2>
-      <p>Füge Ziele hinzu und sehe Pins + Luftlinien-Route in chronologischer Reihenfolge.</p>
       <a class="btn" href="#trip-planner">Jetzt starten</a>
     </div>
   </header>
 
   <main>
-    <section id="about" class="section">
-      <h3>Über uns</h3>
-      <p>Baue hier später deine Inhalte ein – Mission, Werte, Angebot.</p>
-    </section>
+    <section id="auth" class="section">
+      <h3>Registrierung & Login</h3>
+      <div class="auth-grid">
+        <form id="register-form" class="auth-form">
+          <h4>Registrieren</h4>
+          <input name="name" type="text" placeholder="Name" required>
+          <input name="email" type="email" placeholder="E-Mail" required>
+          <input name="password" type="password" placeholder="Passwort (min. 6 Zeichen)" required>
+          <button type="submit">Registrieren</button>
+        </form>
 
-    <section id="services" class="section alt">
-      <h3>Leistungen</h3>
-      <div class="cards">
-        <article class="card">Reiseplanung</article>
-        <article class="card">Budgetplanung</article>
-        <article class="card">Reiseberatung</article>
+        <form id="login-form" class="auth-form">
+          <h4>Login</h4>
+          <input name="email" type="email" placeholder="E-Mail" required>
+          <input name="password" type="password" placeholder="Passwort" required>
+          <button type="submit">Einloggen</button>
+        </form>
       </div>
+      <p id="auth-status" class="status"></p>
+      <button id="logout-btn" type="button" class="secondary-btn hidden">Logout</button>
     </section>
 
-    <section id="trip-planner" class="section">
+    <section id="trip-planner" class="section alt">
       <h3>Interaktiver Reiseplaner</h3>
-      <p>Gib ein Reiseziel ein und klicke auf „Ziel hinzufügen“. Die Route wird als Luftlinie verbunden.</p>
-
       <div class="planner-controls">
-        <input id="destination-input" type="text" placeholder="z. B. Berlin, Paris, Rom">
+        <input id="destination-input" list="destination-suggestions" type="text" placeholder="z. B. Berlin, Paris, Rom">
+        <datalist id="destination-suggestions"></datalist>
         <button id="add-destination-btn" type="button">Ziel hinzufügen</button>
         <button id="reset-route-btn" type="button" class="secondary-btn">Route löschen</button>
       </div>
-
       <div id="status" class="status" aria-live="polite"></div>
-
-      <div id="map" class="map" role="region" aria-label="Karte mit Reisezielen"></div>
-
+      <div id="map" class="map"></div>
       <ol id="destination-list" class="destination-list"></ol>
+
+      <div class="save-route">
+        <input id="route-name" type="text" placeholder="Name der Route">
+        <button id="save-route-btn" type="button">Route speichern</button>
+      </div>
+
+      <h4>Gespeicherte Routen (pro Nutzer)</h4>
+      <ul id="saved-routes" class="destination-list"></ul>
     </section>
   </main>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
