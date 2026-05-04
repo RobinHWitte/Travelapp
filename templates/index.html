@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onepager Reiseplaner</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <h1 class="logo">Travelapp</h1>
+      <ul>
+        <li><a href="#auth">Login</a></li>
+        <li><a href="#trip-planner">Routenplaner</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h2>Plane deine Reise als Onepager</h2>
+      <a class="btn" href="#trip-planner">Jetzt starten</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth" class="section">
+      <h3>Registrierung & Login</h3>
+      <div class="auth-grid">
+        <form id="register-form" class="auth-form">
+          <h4>Registrieren</h4>
+          <input name="name" type="text" placeholder="Name" required>
+          <input name="email" type="email" placeholder="E-Mail" required>
+          <input name="password" type="password" placeholder="Passwort (min. 6 Zeichen)" required>
+          <button type="submit">Registrieren</button>
+        </form>
+
+        <form id="login-form" class="auth-form">
+          <h4>Login</h4>
+          <input name="email" type="email" placeholder="E-Mail" required>
+          <input name="password" type="password" placeholder="Passwort" required>
+          <button type="submit">Einloggen</button>
+        </form>
+      </div>
+      <p id="auth-status" class="status"></p>
+      <button id="logout-btn" type="button" class="secondary-btn hidden">Logout</button>
+    </section>
+
+    <section id="trip-planner" class="section alt">
+      <h3>Interaktiver Reiseplaner</h3>
+      <div class="planner-controls">
+        <input id="destination-input" list="destination-suggestions" type="text" placeholder="z. B. Berlin, Paris, Rom">
+        <datalist id="destination-suggestions"></datalist>
+        <button id="add-destination-btn" type="button">Ziel hinzufügen</button>
+        <button id="reset-route-btn" type="button" class="secondary-btn">Route löschen</button>
+      </div>
+      <div id="status" class="status" aria-live="polite"></div>
+      <div id="map" class="map"></div>
+      <ol id="destination-list" class="destination-list"></ol>
+
+      <div class="save-route">
+        <input id="route-name" type="text" placeholder="Name der Route">
+        <button id="save-route-btn" type="button">Route speichern</button>
+      </div>
+
+      <h4>Gespeicherte Routen (pro Nutzer)</h4>
+      <ul id="saved-routes" class="destination-list"></ul>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
