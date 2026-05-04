@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from pathlib import Path
 
@@ -5,7 +6,7 @@ from flask import Flask, jsonify, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'dev-secret-change-me'
+app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 DB_PATH = Path('travelapp.db')
 
 
