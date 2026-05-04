@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onepager Reiseplaner</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <h1 class="logo">Travelapp</h1>
+      <ul>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#trip-planner">Routenplaner</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h2>Plane deine Reise als Onepager</h2>
+      <p>Füge Ziele hinzu und sehe Pins + Luftlinien-Route in chronologischer Reihenfolge.</p>
+      <a class="btn" href="#trip-planner">Jetzt starten</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h3>Über uns</h3>
+      <p>Baue hier später deine Inhalte ein – Mission, Werte, Angebot.</p>
+    </section>
+
+    <section id="services" class="section alt">
+      <h3>Leistungen</h3>
+      <div class="cards">
+        <article class="card">Reiseplanung</article>
+        <article class="card">Budgetplanung</article>
+        <article class="card">Reiseberatung</article>
+      </div>
+    </section>
+
+    <section id="trip-planner" class="section">
+      <h3>Interaktiver Reiseplaner</h3>
+      <p>Gib ein Reiseziel ein und klicke auf „Ziel hinzufügen“. Die Route wird als Luftlinie verbunden.</p>
+
+      <div class="planner-controls">
+        <input id="destination-input" type="text" placeholder="z. B. Berlin, Paris, Rom">
+        <button id="add-destination-btn" type="button">Ziel hinzufügen</button>
+        <button id="reset-route-btn" type="button" class="secondary-btn">Route löschen</button>
+      </div>
+
+      <div id="status" class="status" aria-live="polite"></div>
+
+      <div id="map" class="map" role="region" aria-label="Karte mit Reisezielen"></div>
+
+      <ol id="destination-list" class="destination-list"></ol>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
