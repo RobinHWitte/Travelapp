@@ -6,7 +6,12 @@ from flask import Flask, jsonify, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
+_secret_key = os.environ.get('SECRET_KEY')
+if not _secret_key:
+    import warnings
+    warnings.warn('SECRET_KEY not set; using a random key. Sessions will not persist across restarts.', stacklevel=1)
+    _secret_key = os.urandom(24)
+app.secret_key = _secret_key
 DB_PATH = Path('travelapp.db')
 
 
