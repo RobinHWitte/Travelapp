@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onepager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <h1 class="logo">Meine Seite</h1>
+      <ul>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="hero-content">
+      <h2>Willkommen auf unserem Onepager</h2>
+      <p>Ein simples Grundgerüst mit Python, HTML und CSS.</p>
+      <a class="btn" href="#contact">Jetzt starten</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h3>Über uns</h3>
+      <p>Hier kannst du später Informationen über dein Projekt einfügen.</p>
+    </section>
+
+    <section id="services" class="section alt">
+      <h3>Leistungen</h3>
+      <div class="cards">
+        <article class="card">Leistung 1</article>
+        <article class="card">Leistung 2</article>
+        <article class="card">Leistung 3</article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h3>Kontakt</h3>
+      <form class="contact-form">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="E-Mail" required>
+        <textarea placeholder="Nachricht" rows="5" required></textarea>
+        <button type="submit">Senden</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
